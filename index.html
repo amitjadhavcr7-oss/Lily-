@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>For Lily 💗</title>
+<title>For Lily</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -13,36 +13,25 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:radial-gradient(circle at top,#fff,#ffe6f0);
-font-family:Poppins;
+background:linear-gradient(135deg,#ffffff,#fde6ee);
+font-family:Inter,sans-serif;
 }
 
 .card{
 background:white;
-padding:36px;
+padding:40px;
 border-radius:32px;
 width:90%;
-max-width:420px;
+max-width:440px;
 text-align:center;
-box-shadow:0 0 40px rgba(255,120,160,.45);
-animation:glow 3s infinite;
+box-shadow:0 25px 50px rgba(240,120,160,.35);
 }
-
-@keyframes glow{
-0%{box-shadow:0 0 25px rgba(255,120,160,.3)}
-50%{box-shadow:0 0 45px rgba(255,120,160,.6)}
-100%{box-shadow:0 0 25px rgba(255,120,160,.3)}
-}
-
-.flowers{font-size:36px;margin-bottom:14px}
-
-.couple{font-size:82px;margin:16px 0}
 
 .title{
-font-family:Sacramento;
-font-size:48px;
-color:#ff4d7a;
-margin-bottom:16px;
+font-family:"Playfair Display",serif;
+font-size:44px;
+color:#e85c88;
+margin-bottom:24px;
 }
 
 .text{
@@ -52,31 +41,87 @@ line-height:1.9;
 }
 
 button{
-margin-top:28px;
-padding:16px 40px;
+margin-top:30px;
+padding:16px 42px;
 border:none;
 border-radius:40px;
-font-size:18px;
+font-size:17px;
 color:white;
-background:linear-gradient(135deg,#ff4d7a,#ff8fab);
-box-shadow:0 12px 25px rgba(255,92,138,.6);
+background:linear-gradient(135deg,#e85c88,#f49fb8);
+box-shadow:0 12px 28px rgba(232,92,136,.55);
 cursor:pointer;
 }
 
 #love{
 display:none;
 margin-top:30px;
-font-family:Sacramento;
-font-size:56px;
-color:#ff1f5a;
+font-family:"Playfair Display",serif;
+font-size:52px;
+color:#e23b6e;
 animation:blink 1s infinite;
 }
 
 @keyframes blink{
 0%{opacity:1}
-50%{opacity:.2}
+50%{opacity:.25}
 100%{opacity:1}
 }
+
+/* Stickman Scene */
+.scene{
+display:flex;
+justify-content:center;
+align-items:flex-end;
+gap:50px;
+margin-bottom:30px;
+}
+
+.stickman{
+position:relative;
+width:60px;
+height:140px;
+}
+
+.head{
+width:26px;
+height:26px;
+border:3px solid #444;
+border-radius:50%;
+margin:0 auto;
+}
+
+.body{
+width:3px;
+height:48px;
+background:#444;
+margin:0 auto;
+}
+
+.arm{
+width:30px;
+height:3px;
+background:#444;
+position:absolute;
+top:52px;
+}
+
+.arm.left{left:-6px;transform:rotate(-20deg)}
+.arm.right{right:-6px;transform:rotate(20deg)}
+
+.leg{
+width:28px;
+height:3px;
+background:#444;
+position:absolute;
+top:100px;
+}
+
+.leg.left{left:-2px;transform:rotate(30deg)}
+.leg.right{right:-2px;transform:rotate(-30deg)}
+
+.kneel .body{height:38px}
+.kneel .leg.left{transform:rotate(65deg)}
+.kneel .leg.right{top:110px}
 </style>
 </head>
 
@@ -87,45 +132,64 @@ animation:blink 1s infinite;
 </audio>
 
 <div class="card">
-<div class="flowers">🌸🌸🌸</div>
 
-<div class="couple">🧍‍♀️ 💍 🧎‍♂️</div>
+<div class="scene">
+  <!-- girl -->
+  <div class="stickman">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+  </div>
+
+  <!-- boy kneeling -->
+  <div class="stickman kneel">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+  </div>
+</div>
 
 <div class="title">Hey Lily</div>
 
 <div class="text">
-I didnt plan for this to happen  
-but somewhere along the way  
-you became someone my heart listens to  
+I dont know when it started  
+but somewhere between simple conversations  
+you became someone my heart feels safe around  
 
 <br><br>
 
-Talking to you feels calm  
-like a place where I can just be myself  
-without pretending  
+There is no rush in what I feel  
+just honesty  
+and a quiet certainty that you matter to me  
 
 <br><br>
 
-Even before meeting you  
+Even before standing in front of you  
 I know this much  
-what I feel for you is real  
+what I feel is real and respectful  
 
 <br><br>
 
-So this is me being honest  
-with no rush and no pressure  
-just truth  
+So this isnt a big promise or a dramatic moment  
+just me choosing to be honest with you  
 
 <br><br>
 
-Will you be my Valentine  
-today tomorrow  
-and all the days that feel right 💗
+Would you like to be my Valentine  
+not just for a day  
+but for something that grows naturally 💗
 </div>
 
-<button onclick="start()">Yes Always 💍</button>
+<button onclick="start()">Yes Always</button>
 
-<div id="love">I Love You 💖</div>
+<div id="love">I Love You</div>
+
 </div>
 
 <script>
