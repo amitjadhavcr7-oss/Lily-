@@ -1,170 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Lily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Lily 💗</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
 margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#fde6ee;
-font-family:Poppins,sans-serif;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(#ffeaf1,#ffd6e6);
+font-family:'Poppins',sans-serif;
 overflow:hidden;
 }
 
-/* Fireworks canvas */
-canvas{
+/* Falling petals canvas */
+#petals, #fireworks{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
 pointer-events:none;
-display:none;
-z-index:1;
+z-index:0;
 }
 
 .card{
-background:white;
-padding:26px;
-border-radius:26px;
-width:94%;
-max-width:420px;
-text-align:center;
-box-shadow:0 20px 40px rgba(240,120,160,.35);
 position:relative;
 z-index:2;
+max-width:360px;
+margin:40px auto;
+background:#fff;
+border-radius:25px;
+padding:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(255,105,150,0.35);
 }
 
-.title{
-font-family:Sacramento;
-font-size:44px;
-color:#e85c88;
-margin:10px 0;
+/* Stickman */
+.stickman{
+display:flex;
+justify-content:center;
+gap:50px;
+margin-bottom:10px;
 }
 
-.text{
-font-size:15px;
+.head{
+width:26px;height:26px;
+border:3px solid #222;
+border-radius:50%;
+margin:auto;
+position:relative;
+}
+
+.girl .head::before{
+content:"";
+position:absolute;
+width:14px;height:8px;
+background:#ff8fb3;
+border-radius:6px;
+top:-6px;left:6px;
+}
+
+.eye{
+width:4px;height:4px;
+background:#000;
+border-radius:50%;
+position:absolute;
+top:9px;
+}
+
+.eye.left{left:6px;}
+.eye.right{right:6px;}
+
+.blush{
+width:6px;height:6px;
+background:#ffb3c7;
+border-radius:50%;
+position:absolute;
+bottom:6px;
+}
+
+.blush.left{left:3px;}
+.blush.right{right:3px;}
+
+.body{
+width:4px;height:40px;
+background:#222;
+margin:auto;
+}
+
+.arm{
+width:25px;height:3px;
+background:#222;
+margin:8px auto;
+}
+
+.leg{
+width:22px;height:3px;
+background:#222;
+margin:6px auto;
+}
+
+h1{
+font-family:'Parisienne',cursive;
+color:#ff6fa3;
+font-size:42px;
+margin:15px 0;
+}
+
+p{
+font-size:14px;
+line-height:1.7;
 color:#444;
-line-height:1.65;
+margin:12px 0;
 }
 
+/* Buttons */
 .buttons{
 display:flex;
 justify-content:center;
-gap:14px;
-margin:16px 0;
+gap:15px;
+margin:20px 0;
 }
 
 button{
-padding:12px 24px;
 border:none;
-border-radius:24px;
-font-size:14px;
-color:white;
-background:linear-gradient(135deg,#e85c88,#f4a6bd);
-box-shadow:0 8px 18px rgba(232,92,136,.45);
+padding:12px 22px;
+border-radius:25px;
+background:linear-gradient(135deg,#ff6fa3,#ff9fc1);
+color:#fff;
+font-size:15px;
 cursor:pointer;
+box-shadow:0 10px 20px rgba(255,105,150,.4);
 }
 
+/* Love text */
 #love{
 display:none;
-margin-top:14px;
-font-family:Sacramento;
-font-size:38px;
-color:#e23b6e;
+font-family:'Parisienne',cursive;
+font-size:36px;
+color:#ff6fa3;
+margin-top:20px;
+animation:glow 1.5s infinite alternate;
 }
 
-/* SVG stickman styling */
-svg{margin-bottom:8px}
+@keyframes glow{
+from{opacity:.7;}
+to{opacity:1;}
+}
 </style>
 </head>
 
 <body>
 
+<canvas id="petals"></canvas>
 <canvas id="fireworks"></canvas>
 
-<audio id="music">
-<source src="khat.mp3" type="audio/mpeg">
-</audio>
+<audio id="music" src="khat.mp3" loop></audio>
 
 <div class="card">
 
-<!-- CLEAN CUTE STICKMAN -->
-<svg width="240" height="130" viewBox="0 0 240 130">
-
-  <!-- Girl -->
-  <circle cx="80" cy="30" r="10" stroke="#222" stroke-width="3" fill="#ffd6c9"/>
-  <!-- bow -->
-  <path d="M72 18 Q65 10 70 25" fill="#ff7aa2"/>
-  <path d="M88 18 Q95 10 90 25" fill="#ff7aa2"/>
-  <!-- eyes -->
-  <circle cx="77" cy="28" r="1.5" fill="#222"/>
-  <circle cx="83" cy="28" r="1.5" fill="#222"/>
-  <!-- blush -->
-  <circle cx="73" cy="32" r="2" fill="#ff9db5"/>
-  <circle cx="87" cy="32" r="2" fill="#ff9db5"/>
-  <!-- smile -->
-  <path d="M77 34 Q80 36 83 34" stroke="#222" stroke-width="1.5" fill="none"/>
-
-  <line x1="80" y1="40" x2="80" y2="75" stroke="#222" stroke-width="3"/>
-  <line x1="80" y1="55" x2="60" y2="65" stroke="#222" stroke-width="3"/>
-  <circle cx="60" cy="65" r="3" fill="#222"/>
-  <line x1="80" y1="55" x2="120" y2="65" stroke="#222" stroke-width="3"/>
-  <circle cx="120" cy="65" r="3" fill="#222"/>
-  <line x1="80" y1="75" x2="65" y2="105" stroke="#222" stroke-width="3"/>
-  <line x1="80" y1="75" x2="95" y2="105" stroke="#222" stroke-width="3"/>
-
-  <!-- Boy -->
-  <circle cx="150" cy="30" r="10" stroke="#222" stroke-width="3" fill="#ffd6c9"/>
-  <!-- eyes -->
-  <circle cx="147" cy="28" r="1.5" fill="#222"/>
-  <circle cx="153" cy="28" r="1.5" fill="#222"/>
-  <!-- blush -->
-  <circle cx="145" cy="32" r="2" fill="#ff9db5"/>
-  <circle cx="155" cy="32" r="2" fill="#ff9db5"/>
-  <!-- smile -->
-  <path d="M147 34 Q150 36 153 34" stroke="#222" stroke-width="1.5" fill="none"/>
-
-  <line x1="150" y1="40" x2="150" y2="65" stroke="#222" stroke-width="3"/>
-  <line x1="150" y1="55" x2="120" y2="65" stroke="#222" stroke-width="3"/>
-  <circle cx="120" cy="65" r="3" fill="#222"/>
-  <line x1="150" y1="55" x2="170" y2="65" stroke="#222" stroke-width="3"/>
-  <circle cx="170" cy="65" r="3" fill="#222"/>
-  <!-- ring -->
-  <circle cx="170" cy="65" r="4" stroke="#e85c88" stroke-width="2" fill="none"/>
-
-  <!-- legs -->
-  <line x1="150" y1="65" x2="140" y2="100" stroke="#222" stroke-width="3"/>
-  <line x1="150" y1="65" x2="150" y2="100" stroke="#222" stroke-width="3"/>
-
-</svg>
-
-<div class="title">Hey Lily</div>
-
-<div class="text">
-Somewhere between small talks and quiet smiles  
-you slowly became a place where my heart feels calm  
-
-There was no rush no plan  
-just something honest that stayed  
-
-Even before meeting you  
-I know this much  
-what I feel for you truly matters  
-
-So this is me choosing truth  
-and asking you something simple but real  
-
-Will you be my Valentine  
-today tomorrow and every moment that feels right
+<div class="stickman">
+<!-- Girl -->
+<div class="girl">
+<div class="head">
+<div class="eye left"></div><div class="eye right"></div>
+<div class="blush left"></div><div class="blush right"></div>
 </div>
+<div class="body"></div>
+<div class="arm"></div>
+<div class="leg"></div>
+</div>
+
+<!-- Boy -->
+<div class="boy">
+<div class="head">
+<div class="eye left"></div><div class="eye right"></div>
+<div class="blush left"></div><div class="blush right"></div>
+</div>
+<div class="body"></div>
+<div class="arm"></div>
+<div class="leg"></div>
+</div>
+</div>
+
+<h1>Hey Lily</h1>
+
+<p>
+Somewhere between small talks and quiet smiles you slowly became a place where my heart feels calm 💗  
+There was no rush no plan just something honest that stayed real  
+Even before meeting you I know this much the way you make me feel truly matters  
+So this is me choosing truth over big words and asking you something simple but meaningful  
+Will you be my Valentine today tomorrow and every moment that feels right 🌸
+</p>
 
 <div class="buttons">
 <button onclick="celebrate()">Yes</button>
@@ -176,64 +212,71 @@ today tomorrow and every moment that feels right
 </div>
 
 <script>
-const canvas=document.getElementById("fireworks");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+// Falling petals
+const petalCanvas=document.getElementById("petals");
+const pCtx=petalCanvas.getContext("2d");
+petalCanvas.width=innerWidth;
+petalCanvas.height=innerHeight;
 
-let particles=[];
-
-function heartBurst(x,y){
-for(let t=0;t<Math.PI*2;t+=0.2){
-let r=12*(1-Math.sin(t));
-particles.push({
-x,y,
-vx:r*Math.cos(t)*0.08,
-vy:-r*Math.sin(t)*0.08,
-life:160,
-color:"rgba(255,120,170,0.9)"
+let petals=[];
+for(let i=0;i<60;i++){
+petals.push({
+x:Math.random()*petalCanvas.width,
+y:Math.random()*petalCanvas.height,
+r:Math.random()*6+4,
+s:Math.random()*0.5+0.3
 });
 }
+
+function drawPetals(){
+pCtx.clearRect(0,0,petalCanvas.width,petalCanvas.height);
+petals.forEach(p=>{
+pCtx.beginPath();
+pCtx.fillStyle="rgba(255,160,190,0.6)";
+pCtx.ellipse(p.x,p.y,p.r,p.r*0.7,0,0,Math.PI*2);
+pCtx.fill();
+p.y+=p.s;
+p.x+=Math.sin(p.y*0.01);
+if(p.y>petalCanvas.height){p.y=0;}
+});
+requestAnimationFrame(drawPetals);
+}
+drawPetals();
+
+// Fireworks
+const fw=document.getElementById("fireworks");
+const fCtx=fw.getContext("2d");
+fw.width=innerWidth;
+fw.height=innerHeight;
+let sparks=[];
+
+function heart(x,y){
+for(let i=0;i<25;i++){
+let a=Math.random()*Math.PI*2;
+sparks.push({x,y,vx:Math.cos(a)*1,vy:Math.sin(a)*1,l:60});
+}
 }
 
-function sparkBurst(x,y){
-for(let i=0;i<80;i++){
-particles.push({
-x,y,
-vx:(Math.random()-0.5)*4,
-vy:(Math.random()-0.5)*4,
-life:120,
-color:`hsl(${330+Math.random()*30},100%,70%)`
+function animateFW(){
+fCtx.clearRect(0,0,fw.width,fw.height);
+sparks.forEach((s,i)=>{
+fCtx.fillStyle="rgba(255,105,180,.8)";
+fCtx.beginPath();
+fCtx.arc(s.x,s.y,3,0,Math.PI*2);
+fCtx.fill();
+s.x+=s.vx;
+s.y+=s.vy;
+s.l--;
+if(s.l<=0)sparks.splice(i,1);
 });
+requestAnimationFrame(animateFW);
 }
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach((p,i)=>{
-p.x+=p.vx;
-p.y+=p.vy;
-p.life--;
-ctx.fillStyle=p.color;
-ctx.beginPath();
-ctx.arc(p.x,p.y,3,0,Math.PI*2);
-ctx.fill();
-if(p.life<=0)particles.splice(i,1);
-});
-requestAnimationFrame(animate);
-}
+animateFW();
 
 function celebrate(){
 document.getElementById("music").play();
 document.getElementById("love").style.display="block";
-canvas.style.display="block";
-setInterval(()=>{
-let x=Math.random()*canvas.width;
-let y=Math.random()*canvas.height/2;
-heartBurst(x,y);
-sparkBurst(x,y);
-},900);
-animate();
+setInterval(()=>heart(Math.random()*fw.width,Math.random()*fw.height),700);
 }
 </script>
 
