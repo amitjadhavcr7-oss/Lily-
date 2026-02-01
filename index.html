@@ -9,7 +9,7 @@
 <style>
 body{
 margin:0;
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -19,51 +19,51 @@ font-family:Poppins;
 
 .card{
 background:white;
-padding:32px;
+padding:34px;
 border-radius:30px;
 width:90%;
-max-width:380px;
+max-width:420px;
 text-align:center;
 box-shadow:0 20px 40px rgba(255,120,160,.35);
 }
 
-.flowers{font-size:36px;margin-bottom:10px}
+.flowers{font-size:36px;margin-bottom:12px}
 
 .couple{
 font-size:80px;
-margin:10px 0;
+margin:14px 0;
 }
 
 .title{
 font-family:Sacramento;
-font-size:44px;
+font-size:46px;
 color:#ff4d7a;
-margin-bottom:10px;
+margin-bottom:14px;
 }
 
 .text{
 font-size:16px;
 color:#444;
-line-height:1.7;
-margin-top:10px;
+line-height:1.8;
 }
 
 button{
-margin-top:25px;
-padding:14px 34px;
+margin-top:26px;
+padding:15px 36px;
 border:none;
 border-radius:30px;
 font-size:18px;
 color:white;
 background:linear-gradient(135deg,#ff4d7a,#ff8fab);
-box-shadow:0 10px 20px rgba(255,92,138,.4);
+box-shadow:0 10px 20px rgba(255,92,138,.45);
+cursor:pointer;
 }
 
 #love{
 display:none;
-margin-top:28px;
+margin-top:26px;
 font-family:Sacramento;
-font-size:52px;
+font-size:54px;
 color:#ff1f5a;
 animation:blink 1s infinite;
 }
@@ -78,52 +78,63 @@ animation:blink 1s infinite;
 
 <body>
 
-<audio id="music" loop>
+<audio id="music" preload="auto">
 <source src="khat.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
 <div class="flowers">🌸🌸🌸</div>
 
-<!-- girl standing + boy kneeling -->
 <div class="couple">🧍‍♀️ 💍 🧎‍♂️</div>
 
 <div class="title">Hey Lily</div>
 
 <div class="text">
-We havent met yet  
-but somehow you already feel important to me  
+I dont know how it happened  
+but somewhere between conversations  
+you became a calm place for my heart  
 
 <br><br>
 
-Every time I talk to you  
-my heart feels lighter  
-and my days feel warmer  
+Talking to you feels easy  
+like something I dont have to pretend for  
+just honest and warm  
 
 <br><br>
 
-I promise I will be there soon  
-standing right in front of you  
-but until that moment  
-my heart chooses you every day  
+Even before meeting you  
+I feel certain about one thing  
+the way you make me feel matters  
 
 <br><br>
 
-So today I ask you honestly  
-with all the feelings I have  
+I promise when I stand in front of you someday  
+it will be with the same honesty I have today  
+and the same respect in my heart  
+
+<br><br>
+
+So this isnt pressure or a promise too big  
+just a simple question with real feelings  
 
 <br><br>
 
 Will you be my Valentine  
 today tomorrow  
-and always 💗
+and whatever comes after 💗
 </div>
 
-<button onclick="playMusic();showLove()">Yes Always 💍</button>
+<button onclick="start()">Yes Always 💍</button>
 
 <div id="love">I Love You 💖</div>
 </div>
 
 <script>
-funct
-  
+function start(){
+document.getElementById("music").play();
+document.getElementById("love").style.display="block";
+}
+</script>
+
+</body>
+</html>
