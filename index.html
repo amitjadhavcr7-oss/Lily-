@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>For Lily</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -13,47 +13,48 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#fde6ee;
-font-family:Montserrat,sans-serif;
+background:linear-gradient(135deg,#fde6ee,#fff);
+font-family:Poppins,sans-serif;
 }
 
 .card{
-background:#fff;
+background:white;
 padding:28px;
 border-radius:26px;
-width:92%;
-max-width:380px;
+width:94%;
+max-width:400px;
 text-align:center;
-box-shadow:0 18px 35px rgba(240,120,160,.35);
+box-shadow:0 20px 40px rgba(240,120,160,.35);
+overflow:hidden;
 }
 
 .title{
 font-family:Sacramento;
 font-size:44px;
 color:#e85c88;
-margin-bottom:10px;
+margin:6px 0 10px;
 }
 
 .text{
-font-family:Sacramento;
-font-size:22px;
-color:#555;
-line-height:1.4;
+font-size:15px;
+color:#444;
+line-height:1.65;
+margin-top:6px;
 }
 
 .buttons{
 display:flex;
 justify-content:center;
 gap:14px;
-margin-top:16px;
+margin:16px 0;
 }
 
 button{
-padding:12px 24px;
+padding:12px 22px;
 border:none;
 border-radius:24px;
-font-size:15px;
-color:#fff;
+font-size:14px;
+color:white;
 background:linear-gradient(135deg,#e85c88,#f4a6bd);
 box-shadow:0 8px 18px rgba(232,92,136,.45);
 cursor:pointer;
@@ -61,17 +62,22 @@ cursor:pointer;
 
 #love{
 display:none;
-margin-top:16px;
+margin-top:12px;
 font-family:Sacramento;
-font-size:40px;
+font-size:38px;
 color:#e23b6e;
-animation:blink 1.2s infinite;
 }
 
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:.3}
-100%{opacity:1}
+/* Celebration */
+.fireworks{
+display:none;
+font-size:22px;
+animation:pop 0.8s infinite alternate;
+}
+
+@keyframes pop{
+from{transform:scale(1)}
+to{transform:scale(1.2)}
 }
 
 /* Stickman Scene */
@@ -79,14 +85,14 @@ animation:blink 1.2s infinite;
 display:flex;
 justify-content:center;
 align-items:flex-end;
-gap:50px;
-margin-bottom:14px;
+gap:55px;
+margin-bottom:10px;
 }
 
 .stick{
 position:relative;
 width:60px;
-height:120px;
+height:140px;
 }
 
 .head{
@@ -96,46 +102,60 @@ border:3px solid #333;
 border-radius:50%;
 margin:0 auto;
 background:#ffd6c9;
+position:relative;
+}
+
+/* ponytail */
+.pony{
+position:absolute;
+right:-6px;
+top:6px;
+width:10px;
+height:10px;
+border:3px solid #333;
+border-radius:50%;
+background:#ffd6c9;
 }
 
 .body{
-width:3px;
-height:40px;
+width:4px;
+height:48px;
 background:#333;
 margin:0 auto;
 }
 
 .arm{
-width:26px;
+width:28px;
 height:3px;
 background:#333;
 position:absolute;
-top:48px;
+top:54px;
 }
 
 .arm.left{left:-6px;transform:rotate(-25deg)}
 .arm.right{right:-6px;transform:rotate(25deg)}
 
 .leg{
-width:26px;
+width:30px;
 height:3px;
 background:#333;
 position:absolute;
-top:92px;
+top:105px;
 }
 
 .leg.left{left:-2px;transform:rotate(30deg)}
 .leg.right{right:-2px;transform:rotate(-30deg)}
 
-.kneel .body{height:30px}
-.kneel .leg.left{transform:rotate(65deg)}
-.kneel .leg.right{top:102px}
+/* kneeling boy */
+.kneel .body{height:40px}
+.kneel .leg.left{transform:rotate(70deg)}
+.kneel .leg.right{top:118px;transform:rotate(-10deg)}
 
-/* Ring */
+/* ring */
 .ring{
 position:absolute;
-right:-18px;
-top:46px;
+right:-16px;
+top:56px;
 width:10px;
 height:10px;
 border:3px solid #f4a6bd;
@@ -153,9 +173,9 @@ border-radius:50%;
 <div class="card">
 
 <div class="scene">
-  <!-- Girl standing -->
+  <!-- Girl -->
   <div class="stick">
-    <div class="head"></div>
+    <div class="head"><div class="pony"></div></div>
     <div class="body"></div>
     <div class="arm left"></div>
     <div class="arm right"></div>
@@ -178,33 +198,39 @@ border-radius:50%;
 <div class="title">Hey Lily</div>
 
 <div class="text">
-Somewhere between simple conversations  
-you became someone my heart feels calm with  
+Somewhere between small talks and quiet smiles  
+you became a place where my heart feels calm 💗  
 
-There is no hurry in what I feel  
-just honesty and something quietly real  
+There was no plan no rush  
+just a feeling that stayed honest and real  
 
-So this is me choosing truth over big words  
-and asking you something that means a lot  
+Even before meeting you  
+I know this much  
+the way you make me feel matters deeply  
 
-Would you be my Valentine  
-not just for today  
-but for something that grows with time
+So this is me standing with my truth  
+asking you something simple yet meaningful  
+
+Will you be my Valentine  
+today tomorrow and every moment that feels right 🌸
 </div>
 
 <div class="buttons">
-<button onclick="start()">Yes</button>
-<button onclick="start()">Always Yes</button>
+<button onclick="celebrate()">Yes</button>
+<button onclick="celebrate()">Always Yes</button>
 </div>
 
-<div id="love">I Love You Forever and Ever</div>
+<div class="fireworks" id="fire">🚀✨🎆🎉✨🚀</div>
+
+<div id="love">I Love You Forever and Ever 🧿</div>
 
 </div>
 
 <script>
-function start(){
+function celebrate(){
 document.getElementById("music").play();
 document.getElementById("love").style.display="block";
+document.getElementById("fire").style.display="block";
 }
 </script>
 
