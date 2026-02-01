@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>For Lily</title>
+<title>For Lily 💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -17,89 +17,113 @@ background:linear-gradient(135deg,#ffffff,#ffe6f0);
 font-family:Poppins;
 }
 
-.box{
+.card{
 background:white;
-padding:30px;
-border-radius:25px;
-text-align:center;
+padding:32px;
+border-radius:30px;
 width:90%;
 max-width:380px;
-box-shadow:0 20px 40px rgba(255,120,160,.3);
+text-align:center;
+box-shadow:0 20px 40px rgba(255,120,160,.35);
 }
 
-.flowers{font-size:40px}
-.boy{font-size:80px}
+.flowers{font-size:36px;margin-bottom:10px}
+
+.couple{
+font-size:80px;
+margin:10px 0;
+}
+
 .title{
 font-family:Sacramento;
-font-size:45px;
+font-size:44px;
 color:#ff4d7a;
+margin-bottom:10px;
 }
 
 .text{
-margin-top:15px;
 font-size:16px;
 color:#444;
-line-height:1.6;
+line-height:1.7;
+margin-top:10px;
 }
 
 button{
 margin-top:25px;
-padding:14px 30px;
+padding:14px 34px;
 border:none;
 border-radius:30px;
 font-size:18px;
 color:white;
-background:linear-gradient(135deg,#ff4d7a,#ff85a2);
+background:linear-gradient(135deg,#ff4d7a,#ff8fab);
+box-shadow:0 10px 20px rgba(255,92,138,.4);
 }
 
 #love{
 display:none;
-margin-top:25px;
+margin-top:28px;
 font-family:Sacramento;
-font-size:55px;
+font-size:52px;
 color:#ff1f5a;
 animation:blink 1s infinite;
 }
 
 @keyframes blink{
 0%{opacity:1}
-50%{opacity:.2}
+50%{opacity:.3}
 100%{opacity:1}
 }
 </style>
 </head>
 
-<body onclick="playMusic()">
+<body>
 
 <audio id="music" loop>
-<source src="khaat.mp3">
+<source src="khat.mp3" type="audio/mpeg">
 </audio>
 
-<div class="box">
+<div class="card">
 <div class="flowers">🌸🌸🌸</div>
-<div class="boy">🧎‍♂️💐</div>
+
+<!-- girl standing + boy kneeling -->
+<div class="couple">🧍‍♀️ 💍 🧎‍♂️</div>
 
 <div class="title">Hey Lily</div>
 
 <div class="text">
-We havent met yet but my heart already knows you<br><br>
-I promise I will be there soon but till then my heart kneels for you<br><br>
-Will you be my Valentine today tomorrow forever 💗
+We havent met yet  
+but somehow you already feel important to me  
+
+<br><br>
+
+Every time I talk to you  
+my heart feels lighter  
+and my days feel warmer  
+
+<br><br>
+
+I promise I will be there soon  
+standing right in front of you  
+but until that moment  
+my heart chooses you every day  
+
+<br><br>
+
+So today I ask you honestly  
+with all the feelings I have  
+
+<br><br>
+
+Will you be my Valentine  
+today tomorrow  
+and always 💗
 </div>
 
-<button onclick="showLove()">Yes Always 💍</button>
+<button onclick="playMusic();showLove()">Yes Always 💍</button>
 
 <div id="love">I Love You 💖</div>
 </div>
 
 <script>
-function playMusic(){
-document.getElementById("music").play()
-}
-function showLove(){
-document.getElementById("love").style.display="block"
-}
-</script>
-
-</body>
-</html>
+funct
+  
