@@ -4,66 +4,73 @@
 <meta charset="UTF-8">
 <title>For Lily</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-min-height:100vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffffff,#fde6ee);
-font-family:Inter,sans-serif;
+background:#fde6ee;
+font-family:Montserrat,sans-serif;
 }
 
 .card{
-background:white;
-padding:40px;
-border-radius:32px;
-width:90%;
-max-width:440px;
+background:#fff;
+padding:28px;
+border-radius:26px;
+width:92%;
+max-width:380px;
 text-align:center;
-box-shadow:0 25px 50px rgba(240,120,160,.35);
+box-shadow:0 18px 35px rgba(240,120,160,.35);
 }
 
 .title{
-font-family:"Playfair Display",serif;
+font-family:Sacramento;
 font-size:44px;
 color:#e85c88;
-margin-bottom:24px;
+margin-bottom:10px;
 }
 
 .text{
-font-size:16px;
-color:#444;
-line-height:1.9;
+font-family:Sacramento;
+font-size:22px;
+color:#555;
+line-height:1.4;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:14px;
+margin-top:16px;
 }
 
 button{
-margin-top:30px;
-padding:16px 42px;
+padding:12px 24px;
 border:none;
-border-radius:40px;
-font-size:17px;
-color:white;
-background:linear-gradient(135deg,#e85c88,#f49fb8);
-box-shadow:0 12px 28px rgba(232,92,136,.55);
+border-radius:24px;
+font-size:15px;
+color:#fff;
+background:linear-gradient(135deg,#e85c88,#f4a6bd);
+box-shadow:0 8px 18px rgba(232,92,136,.45);
 cursor:pointer;
 }
 
 #love{
 display:none;
-margin-top:30px;
-font-family:"Playfair Display",serif;
-font-size:52px;
+margin-top:16px;
+font-family:Sacramento;
+font-size:40px;
 color:#e23b6e;
-animation:blink 1s infinite;
+animation:blink 1.2s infinite;
 }
 
 @keyframes blink{
 0%{opacity:1}
-50%{opacity:.25}
+50%{opacity:.3}
 100%{opacity:1}
 }
 
@@ -73,55 +80,67 @@ display:flex;
 justify-content:center;
 align-items:flex-end;
 gap:50px;
-margin-bottom:30px;
+margin-bottom:14px;
 }
 
-.stickman{
+.stick{
 position:relative;
 width:60px;
-height:140px;
+height:120px;
 }
 
 .head{
-width:26px;
-height:26px;
-border:3px solid #444;
+width:22px;
+height:22px;
+border:3px solid #333;
 border-radius:50%;
 margin:0 auto;
+background:#ffd6c9;
 }
 
 .body{
 width:3px;
-height:48px;
-background:#444;
+height:40px;
+background:#333;
 margin:0 auto;
 }
 
 .arm{
-width:30px;
+width:26px;
 height:3px;
-background:#444;
+background:#333;
 position:absolute;
-top:52px;
+top:48px;
 }
 
-.arm.left{left:-6px;transform:rotate(-20deg)}
-.arm.right{right:-6px;transform:rotate(20deg)}
+.arm.left{left:-6px;transform:rotate(-25deg)}
+.arm.right{right:-6px;transform:rotate(25deg)}
 
 .leg{
-width:28px;
+width:26px;
 height:3px;
-background:#444;
+background:#333;
 position:absolute;
-top:100px;
+top:92px;
 }
 
 .leg.left{left:-2px;transform:rotate(30deg)}
 .leg.right{right:-2px;transform:rotate(-30deg)}
 
-.kneel .body{height:38px}
+.kneel .body{height:30px}
 .kneel .leg.left{transform:rotate(65deg)}
-.kneel .leg.right{top:110px}
+.kneel .leg.right{top:102px}
+
+/* Ring */
+.ring{
+position:absolute;
+right:-18px;
+top:46px;
+width:10px;
+height:10px;
+border:3px solid #f4a6bd;
+border-radius:50%;
+}
 </style>
 </head>
 
@@ -134,8 +153,8 @@ top:100px;
 <div class="card">
 
 <div class="scene">
-  <!-- girl -->
-  <div class="stickman">
+  <!-- Girl standing -->
+  <div class="stick">
     <div class="head"></div>
     <div class="body"></div>
     <div class="arm left"></div>
@@ -144,12 +163,13 @@ top:100px;
     <div class="leg right"></div>
   </div>
 
-  <!-- boy kneeling -->
-  <div class="stickman kneel">
+  <!-- Boy kneeling -->
+  <div class="stick kneel">
     <div class="head"></div>
     <div class="body"></div>
     <div class="arm left"></div>
     <div class="arm right"></div>
+    <div class="ring"></div>
     <div class="leg left"></div>
     <div class="leg right"></div>
   </div>
@@ -158,37 +178,26 @@ top:100px;
 <div class="title">Hey Lily</div>
 
 <div class="text">
-I dont know when it started  
-but somewhere between simple conversations  
-you became someone my heart feels safe around  
+Somewhere between simple conversations  
+you became someone my heart feels calm with  
 
-<br><br>
+There is no hurry in what I feel  
+just honesty and something quietly real  
 
-There is no rush in what I feel  
-just honesty  
-and a quiet certainty that you matter to me  
+So this is me choosing truth over big words  
+and asking you something that means a lot  
 
-<br><br>
-
-Even before standing in front of you  
-I know this much  
-what I feel is real and respectful  
-
-<br><br>
-
-So this isnt a big promise or a dramatic moment  
-just me choosing to be honest with you  
-
-<br><br>
-
-Would you like to be my Valentine  
-not just for a day  
-but for something that grows naturally 💗
+Would you be my Valentine  
+not just for today  
+but for something that grows with time
 </div>
 
-<button onclick="start()">Yes Always</button>
+<div class="buttons">
+<button onclick="start()">Yes</button>
+<button onclick="start()">Always Yes</button>
+</div>
 
-<div id="love">I Love You</div>
+<div id="love">I Love You Forever and Ever</div>
 
 </div>
 
