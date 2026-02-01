@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>For Lily</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Sacramento&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -16,6 +16,17 @@ align-items:center;
 background:#fde6ee;
 font-family:Poppins,sans-serif;
 overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+display:none;
+z-index:1;
 }
 
 .card{
@@ -34,7 +45,7 @@ z-index:2;
 font-family:Sacramento;
 font-size:44px;
 color:#e85c88;
-margin:6px 0 10px;
+margin:10px 0;
 }
 
 .text{
@@ -68,100 +79,6 @@ font-family:Sacramento;
 font-size:38px;
 color:#e23b6e;
 }
-
-/* Stickman Scene */
-.scene{
-display:flex;
-justify-content:center;
-align-items:flex-end;
-gap:60px;
-margin-bottom:12px;
-}
-
-.stick{
-position:relative;
-width:60px;
-height:150px;
-}
-
-.head{
-width:24px;
-height:24px;
-border:3px solid #222;
-border-radius:50%;
-margin:0 auto;
-background:#ffd6c9;
-position:relative;
-}
-
-/* ponytail */
-.pony{
-position:absolute;
-right:-8px;
-top:6px;
-width:10px;
-height:10px;
-border:3px solid #222;
-border-radius:50%;
-background:#ffd6c9;
-}
-
-.body{
-width:4px;
-height:52px;
-background:#222;
-margin:0 auto;
-}
-
-.arm{
-width:30px;
-height:4px;
-background:#222;
-position:absolute;
-top:58px;
-}
-
-.arm.left{left:-6px;transform:rotate(-30deg)}
-.arm.right{right:-6px;transform:rotate(30deg)}
-
-.leg{
-width:32px;
-height:4px;
-background:#222;
-position:absolute;
-top:112px;
-}
-
-.leg.left{left:-2px;transform:rotate(35deg)}
-.leg.right{right:-2px;transform:rotate(-35deg)}
-
-/* kneeling boy */
-.kneel .body{height:42px}
-.kneel .leg.left{transform:rotate(75deg)}
-.kneel .leg.right{top:126px;transform:rotate(-10deg)}
-
-/* ring */
-.ring{
-position:absolute;
-right:-18px;
-top:60px;
-width:10px;
-height:10px;
-border:3px solid #e85c88;
-border-radius:50%;
-}
-
-/* Fireworks canvas */
-canvas{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:1;
-pointer-events:none;
-display:none;
-}
 </style>
 </head>
 
@@ -175,28 +92,29 @@ display:none;
 
 <div class="card">
 
-<div class="scene">
+<!-- CLEAN STICKMAN SVG -->
+<svg width="220" height="120" viewBox="0 0 220 120">
   <!-- Girl -->
-  <div class="stick">
-    <div class="head"><div class="pony"></div></div>
-    <div class="body"></div>
-    <div class="arm left"></div>
-    <div class="arm right"></div>
-    <div class="leg left"></div>
-    <div class="leg right"></div>
-  </div>
+  <circle cx="70" cy="25" r="10" stroke="#222" stroke-width="3" fill="#ffd6c9"/>
+  <path d="M65 20 Q55 10 60 28" stroke="#222" stroke-width="3" fill="none"/> <!-- hair -->
+  <line x1="70" y1="35" x2="70" y2="70" stroke="#222" stroke-width="3"/>
+  <line x1="70" y1="50" x2="55" y2="60" stroke="#222" stroke-width="3"/>
+  <line x1="70" y1="50" x2="90" y2="55" stroke="#222" stroke-width="3"/>
+  <line x1="70" y1="70" x2="55" y2="95" stroke="#222" stroke-width="3"/>
+  <line x1="70" y1="70" x2="85" y2="95" stroke="#222" stroke-width="3"/>
 
-  <!-- Boy kneeling -->
-  <div class="stick kneel">
-    <div class="head"></div>
-    <div class="body"></div>
-    <div class="arm left"></div>
-    <div class="arm right"></div>
-    <div class="ring"></div>
-    <div class="leg left"></div>
-    <div class="leg right"></div>
-  </div>
-</div>
+  <!-- Boy -->
+  <circle cx="150" cy="25" r="10" stroke="#222" stroke-width="3" fill="#ffd6c9"/>
+  <line x1="150" y1="35" x2="150" y2="65" stroke="#222" stroke-width="3"/>
+  <line x1="150" y1="50" x2="130" y2="55" stroke="#222" stroke-width="3"/>
+  <line x1="150" y1="50" x2="170" y2="55" stroke="#222" stroke-width="3"/>
+  <circle cx="170" cy="55" r="4" stroke="#e85c88" stroke-width="2" fill="none"/> <!-- ring -->
+  <line x1="150" y1="65" x2="135" y2="90" stroke="#222" stroke-width="3"/>
+  <line x1="150" y1="65" x2="150" y2="95" stroke="#222" stroke-width="3"/>
+
+  <!-- Hands holding -->
+  <line x1="90" y1="55" x2="130" y2="55" stroke="#222" stroke-width="3"/>
+</svg>
 
 <div class="title">Hey Lily</div>
 
@@ -204,15 +122,15 @@ display:none;
 Somewhere between small talks and quiet smiles  
 you slowly became a place where my heart feels calm  
 
-There was no plan no rush  
-just a feeling that stayed honest and real  
+There was no rush no plan  
+just something honest that stayed  
 
 Even before meeting you  
 I know this much  
-the way you make me feel truly matters  
+what I feel for you truly matters  
 
-So this is me standing with my truth  
-asking you something simple yet meaningful  
+So this is me choosing truth  
+and asking you something simple but real  
 
 Will you be my Valentine  
 today tomorrow and every moment that feels right
@@ -235,14 +153,15 @@ canvas.height=window.innerHeight;
 
 let particles=[];
 
-function firework(){
-for(let i=0;i<80;i++){
+function burst(){
+const x=Math.random()*canvas.width;
+const y=Math.random()*canvas.height/2;
+for(let i=0;i<120;i++){
 particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height/2,
+x,y,
 vx:(Math.random()-0.5)*6,
 vy:(Math.random()-0.5)*6,
-life:100,
+life:120,
 color:`hsl(${Math.random()*360},100%,70%)`
 });
 }
@@ -265,7 +184,7 @@ function celebrate(){
 document.getElementById("music").play();
 document.getElementById("love").style.display="block";
 canvas.style.display="block";
-firework();
+setInterval(burst,700); // continuous crackers
 animate();
 }
 </script>
