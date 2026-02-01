@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>For Lily</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -13,19 +13,21 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#fde6ee,#fff);
+background:#fde6ee;
 font-family:Poppins,sans-serif;
+overflow:hidden;
 }
 
 .card{
-background:white;
-padding:28px;
+background:#fff;
+padding:26px;
 border-radius:26px;
 width:94%;
-max-width:400px;
+max-width:420px;
 text-align:center;
 box-shadow:0 20px 40px rgba(240,120,160,.35);
-overflow:hidden;
+position:relative;
+z-index:2;
 }
 
 .title{
@@ -39,7 +41,6 @@ margin:6px 0 10px;
 font-size:15px;
 color:#444;
 line-height:1.65;
-margin-top:6px;
 }
 
 .buttons{
@@ -50,7 +51,7 @@ margin:16px 0;
 }
 
 button{
-padding:12px 22px;
+padding:12px 24px;
 border:none;
 border-radius:24px;
 font-size:14px;
@@ -62,22 +63,10 @@ cursor:pointer;
 
 #love{
 display:none;
-margin-top:12px;
+margin-top:14px;
 font-family:Sacramento;
 font-size:38px;
 color:#e23b6e;
-}
-
-/* Celebration */
-.fireworks{
-display:none;
-font-size:22px;
-animation:pop 0.8s infinite alternate;
-}
-
-@keyframes pop{
-from{transform:scale(1)}
-to{transform:scale(1.2)}
 }
 
 /* Stickman Scene */
@@ -85,20 +74,20 @@ to{transform:scale(1.2)}
 display:flex;
 justify-content:center;
 align-items:flex-end;
-gap:55px;
-margin-bottom:10px;
+gap:60px;
+margin-bottom:12px;
 }
 
 .stick{
 position:relative;
 width:60px;
-height:140px;
+height:150px;
 }
 
 .head{
-width:22px;
-height:22px;
-border:3px solid #333;
+width:24px;
+height:24px;
+border:3px solid #222;
 border-radius:50%;
 margin:0 auto;
 background:#ffd6c9;
@@ -108,63 +97,77 @@ position:relative;
 /* ponytail */
 .pony{
 position:absolute;
-right:-6px;
+right:-8px;
 top:6px;
 width:10px;
 height:10px;
-border:3px solid #333;
+border:3px solid #222;
 border-radius:50%;
 background:#ffd6c9;
 }
 
 .body{
 width:4px;
-height:48px;
-background:#333;
+height:52px;
+background:#222;
 margin:0 auto;
 }
 
 .arm{
-width:28px;
-height:3px;
-background:#333;
+width:30px;
+height:4px;
+background:#222;
 position:absolute;
-top:54px;
+top:58px;
 }
 
-.arm.left{left:-6px;transform:rotate(-25deg)}
-.arm.right{right:-6px;transform:rotate(25deg)}
+.arm.left{left:-6px;transform:rotate(-30deg)}
+.arm.right{right:-6px;transform:rotate(30deg)}
 
 .leg{
-width:30px;
-height:3px;
-background:#333;
+width:32px;
+height:4px;
+background:#222;
 position:absolute;
-top:105px;
+top:112px;
 }
 
-.leg.left{left:-2px;transform:rotate(30deg)}
-.leg.right{right:-2px;transform:rotate(-30deg)}
+.leg.left{left:-2px;transform:rotate(35deg)}
+.leg.right{right:-2px;transform:rotate(-35deg)}
 
 /* kneeling boy */
-.kneel .body{height:40px}
-.kneel .leg.left{transform:rotate(70deg)}
-.kneel .leg.right{top:118px;transform:rotate(-10deg)}
+.kneel .body{height:42px}
+.kneel .leg.left{transform:rotate(75deg)}
+.kneel .leg.right{top:126px;transform:rotate(-10deg)}
 
 /* ring */
 .ring{
 position:absolute;
-right:-16px;
-top:56px;
+right:-18px;
+top:60px;
 width:10px;
 height:10px;
-border:3px solid #f4a6bd;
+border:3px solid #e85c88;
 border-radius:50%;
+}
+
+/* Fireworks canvas */
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+pointer-events:none;
+display:none;
 }
 </style>
 </head>
 
 <body>
+
+<canvas id="fireworks"></canvas>
 
 <audio id="music">
 <source src="khat.mp3" type="audio/mpeg">
@@ -199,20 +202,20 @@ border-radius:50%;
 
 <div class="text">
 Somewhere between small talks and quiet smiles  
-you became a place where my heart feels calm 💗  
+you slowly became a place where my heart feels calm  
 
 There was no plan no rush  
 just a feeling that stayed honest and real  
 
 Even before meeting you  
 I know this much  
-the way you make me feel matters deeply  
+the way you make me feel truly matters  
 
 So this is me standing with my truth  
 asking you something simple yet meaningful  
 
 Will you be my Valentine  
-today tomorrow and every moment that feels right 🌸
+today tomorrow and every moment that feels right
 </div>
 
 <div class="buttons">
@@ -220,17 +223,50 @@ today tomorrow and every moment that feels right 🌸
 <button onclick="celebrate()">Always Yes</button>
 </div>
 
-<div class="fireworks" id="fire">🚀✨🎆🎉✨🚀</div>
-
 <div id="love">I Love You Forever and Ever 🧿</div>
 
 </div>
 
 <script>
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+function firework(){
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height/2,
+vx:(Math.random()-0.5)*6,
+vy:(Math.random()-0.5)*6,
+life:100,
+color:`hsl(${Math.random()*360},100%,70%)`
+});
+}
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach((p,i)=>{
+p.x+=p.vx;
+p.y+=p.vy;
+p.life--;
+ctx.fillStyle=p.color;
+ctx.fillRect(p.x,p.y,3,3);
+if(p.life<=0)particles.splice(i,1);
+});
+requestAnimationFrame(animate);
+}
+
 function celebrate(){
 document.getElementById("music").play();
 document.getElementById("love").style.display="block";
-document.getElementById("fire").style.display="block";
+canvas.style.display="block";
+firework();
+animate();
 }
 </script>
 
