@@ -13,64 +13,68 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffffff,#ffe6f0);
+background:radial-gradient(circle at top,#fff,#ffe6f0);
 font-family:Poppins;
 }
 
 .card{
 background:white;
-padding:34px;
-border-radius:30px;
+padding:36px;
+border-radius:32px;
 width:90%;
 max-width:420px;
 text-align:center;
-box-shadow:0 20px 40px rgba(255,120,160,.35);
+box-shadow:0 0 40px rgba(255,120,160,.45);
+animation:glow 3s infinite;
 }
 
-.flowers{font-size:36px;margin-bottom:12px}
-
-.couple{
-font-size:80px;
-margin:14px 0;
+@keyframes glow{
+0%{box-shadow:0 0 25px rgba(255,120,160,.3)}
+50%{box-shadow:0 0 45px rgba(255,120,160,.6)}
+100%{box-shadow:0 0 25px rgba(255,120,160,.3)}
 }
+
+.flowers{font-size:36px;margin-bottom:14px}
+
+.couple{font-size:82px;margin:16px 0}
 
 .title{
 font-family:Sacramento;
-font-size:46px;
+font-size:48px;
 color:#ff4d7a;
-margin-bottom:14px;
+margin-bottom:16px;
 }
 
 .text{
 font-size:16px;
 color:#444;
-line-height:1.8;
+line-height:1.9;
 }
 
 button{
-margin-top:26px;
-padding:15px 36px;
+margin-top:28px;
+padding:16px 40px;
 border:none;
-border-radius:30px;
+border-radius:40px;
 font-size:18px;
 color:white;
 background:linear-gradient(135deg,#ff4d7a,#ff8fab);
-box-shadow:0 10px 20px rgba(255,92,138,.45);
+box-shadow:0 12px 25px rgba(255,92,138,.6);
 cursor:pointer;
 }
 
 #love{
 display:none;
-margin-top:26px;
+margin-top:30px;
 font-family:Sacramento;
-font-size:54px;
+font-size:56px;
 color:#ff1f5a;
 animation:blink 1s infinite;
 }
 
 @keyframes blink{
 0%{opacity:1}
-50%{opacity:.3}
+50%{opacity:.2}
 100%{opacity:1}
 }
 </style>
@@ -78,7 +82,7 @@ animation:blink 1s infinite;
 
 <body>
 
-<audio id="music" preload="auto">
+<audio id="music">
 <source src="khat.mp3" type="audio/mpeg">
 </audio>
 
@@ -90,38 +94,33 @@ animation:blink 1s infinite;
 <div class="title">Hey Lily</div>
 
 <div class="text">
-I dont know how it happened  
-but somewhere between conversations  
-you became a calm place for my heart  
+I didnt plan for this to happen  
+but somewhere along the way  
+you became someone my heart listens to  
 
 <br><br>
 
-Talking to you feels easy  
-like something I dont have to pretend for  
-just honest and warm  
+Talking to you feels calm  
+like a place where I can just be myself  
+without pretending  
 
 <br><br>
 
 Even before meeting you  
-I feel certain about one thing  
-the way you make me feel matters  
+I know this much  
+what I feel for you is real  
 
 <br><br>
 
-I promise when I stand in front of you someday  
-it will be with the same honesty I have today  
-and the same respect in my heart  
-
-<br><br>
-
-So this isnt pressure or a promise too big  
-just a simple question with real feelings  
+So this is me being honest  
+with no rush and no pressure  
+just truth  
 
 <br><br>
 
 Will you be my Valentine  
 today tomorrow  
-and whatever comes after 💗
+and all the days that feel right 💗
 </div>
 
 <button onclick="start()">Yes Always 💍</button>
