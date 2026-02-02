@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <title>Hey Lily 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
 }
 
 body{
   background:#ffeaf1;
   overflow:hidden;
+  font-family:'Poppins',sans-serif;
 }
 
 canvas{
@@ -60,30 +60,45 @@ p{
   color:#555;
   font-size:15px;
   line-height:1.6;
-  margin-bottom:30px;
+  margin-bottom:35px;
 }
 
+/* BUTTON AREA */
 .buttons{
-  display:flex;
-  justify-content:center;
-  gap:15px;
   position:relative;
+  height:80px;
 }
 
+/* COMMON BUTTON STYLE */
 button{
   border:none;
-  padding:12px 26px;
+  padding:12px 30px;
   border-radius:30px;
-  font-size:15px;
+  font-size:16px;
   cursor:pointer;
   color:white;
-  background:linear-gradient(135deg,#ff7aa2,#ff4f8b);
+  font-family:'Playfair Display',serif;
+  letter-spacing:0.5px;
   box-shadow:0 10px 20px rgba(255,105,135,0.4);
+  transition:all 0.3s ease;
+}
+
+/* ALWAYS YES */
+#yesBtn{
+  position:relative;
+  background:linear-gradient(135deg,#ff7aa2,#ff4f8b);
+}
+
+#yesBtn:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 30px rgba(255,105,135,0.6);
 }
 
 /* NO BUTTON */
 #noBtn{
   position:absolute;
+  right:0;
+  background:linear-gradient(135deg,#ff9dbb,#ff6f9f);
 }
 
 /* LOVE TEXT */
@@ -92,7 +107,7 @@ button{
   font-family:'Great Vibes',cursive;
   font-size:36px;
   color:#ff6f9f;
-  margin-top:20px;
+  margin-top:25px;
 }
 </style>
 </head>
@@ -118,7 +133,7 @@ button{
     </p>
 
     <div class="buttons">
-      <button id="alwaysYes" onclick="celebrate()">Always Yes</button>
+      <button id="yesBtn" onclick="celebrate()">Always Yes</button>
       <button id="noBtn">No</button>
     </div>
 
@@ -128,13 +143,13 @@ button{
 </div>
 
 <script>
-/* BACKGROUND PETALS */
+/* PETALS */
 const bg = document.getElementById("bg");
 bg.width = innerWidth;
 bg.height = innerHeight;
 const b = bg.getContext("2d");
 
-let petals = [];
+let petals=[];
 for(let i=0;i<60;i++){
   petals.push({
     x:Math.random()*bg.width,
@@ -147,10 +162,10 @@ for(let i=0;i<60;i++){
 function petalsFall(){
   b.clearRect(0,0,bg.width,bg.height);
   petals.forEach(p=>{
-    p.y += p.s;
-    p.x += Math.sin(p.y*0.01);
-    if(p.y > bg.height) p.y = 0;
-    b.fillStyle = "rgba(255,150,180,0.6)";
+    p.y+=p.s;
+    p.x+=Math.sin(p.y*0.01);
+    if(p.y>bg.height)p.y=0;
+    b.fillStyle="rgba(255,150,180,0.6)";
     b.beginPath();
     b.arc(p.x,p.y,p.r,0,Math.PI*2);
     b.fill();
@@ -159,29 +174,25 @@ function petalsFall(){
 }
 petalsFall();
 
-/* NO BUTTON ESCAPE */
-const noBtn = document.getElementById("noBtn");
-const card = document.getElementById("card");
+/* NO BUTTON RUNS */
+const noBtn=document.getElementById("noBtn");
+const card=document.getElementById("card");
 
-noBtn.addEventListener("click", ()=>{
-  const maxX = card.clientWidth - noBtn.clientWidth;
-  const maxY = card.clientHeight - noBtn.clientHeight;
+noBtn.addEventListener("click",()=>{
+  const maxX=card.clientWidth-noBtn.clientWidth;
+  const maxY=card.clientHeight-noBtn.clientHeight;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  noBtn.style.left=Math.random()*maxX+"px";
+  noBtn.style.top=Math.random()*maxY+"px";
 });
 
 /* CELEBRATION */
-const fx = document.getElementById("fx");
-fx.width = innerWidth;
-fx.height = innerHeight;
-const f = fx.getContext("2d");
+const fx=document.getElementById("fx");
+fx.width=innerWidth;
+fx.height=innerHeight;
+const f=fx.getContext("2d");
 
-let sparks = [];
-
+let sparks=[];
 function burst(x,y){
   for(let i=0;i<30;i++){
     sparks.push({
@@ -197,21 +208,21 @@ function burst(x,y){
 function animateFx(){
   f.clearRect(0,0,fx.width,fx.height);
   sparks.forEach((s,i)=>{
-    s.x += s.vx;
-    s.y += s.vy;
+    s.x+=s.vx;
+    s.y+=s.vy;
     s.l--;
-    f.fillStyle = s.c;
+    f.fillStyle=s.c;
     f.beginPath();
     f.arc(s.x,s.y,4,0,Math.PI*2);
     f.fill();
-    if(s.l <= 0) sparks.splice(i,1);
+    if(s.l<=0)sparks.splice(i,1);
   });
   requestAnimationFrame(animateFx);
 }
 
 function celebrate(){
   document.getElementById("music").play().catch(()=>{});
-  document.getElementById("love").style.display = "block";
+  document.getElementById("love").style.display="block";
   setInterval(()=>burst(Math.random()*fx.width,Math.random()*fx.height),700);
   animateFx();
 }
