@@ -49,19 +49,6 @@ canvas{
   z-index:2;
 }
 
-/* COUPLE IMAGE */
-.couple{
-  margin-bottom:15px;
-}
-
-.couple img{
-  width:100%;
-  max-width:260px;
-  height:auto;
-  opacity:0.95;
-  filter:drop-shadow(0 8px 15px rgba(255,105,135,0.25));
-}
-
 h1{
   font-family:'Great Vibes',cursive;
   font-size:42px;
@@ -73,14 +60,14 @@ p{
   color:#555;
   font-size:15px;
   line-height:1.6;
-  margin-bottom:20px;
+  margin-bottom:30px;
 }
 
 .buttons{
   display:flex;
-  gap:15px;
   justify-content:center;
-  margin:20px 0;
+  gap:15px;
+  position:relative;
 }
 
 button{
@@ -94,12 +81,18 @@ button{
   box-shadow:0 10px 20px rgba(255,105,135,0.4);
 }
 
+/* NO BUTTON */
+#noBtn{
+  position:absolute;
+}
+
+/* LOVE TEXT */
 #love{
   display:none;
   font-family:'Great Vibes',cursive;
   font-size:36px;
   color:#ff6f9f;
-  margin-top:15px;
+  margin-top:20px;
 }
 </style>
 </head>
@@ -112,12 +105,7 @@ button{
 <audio id="music" src="khat.mp3"></audio>
 
 <div class="container">
-  <div class="card">
-
-    <!-- COUPLE ILLUSTRATION -->
-    <div class="couple">
-      <img src="couple.png" alt="Us together">
-    </div>
+  <div class="card" id="card">
 
     <h1>Hey Lily</h1>
 
@@ -130,8 +118,8 @@ button{
     </p>
 
     <div class="buttons">
-      <button onclick="celebrate()">Yes</button>
-      <button onclick="celebrate()">Always Yes</button>
+      <button id="alwaysYes" onclick="celebrate()">Always Yes</button>
+      <button id="noBtn">No</button>
     </div>
 
     <div id="love">I Love You Forever and Ever 🧿</div>
@@ -140,16 +128,12 @@ button{
 </div>
 
 <script>
-/* CANVAS SETUP */
+/* BACKGROUND PETALS */
 const bg = document.getElementById("bg");
-const fx = document.getElementById("fx");
-bg.width = fx.width = innerWidth;
-bg.height = fx.height = innerHeight;
-
+bg.width = innerWidth;
+bg.height = innerHeight;
 const b = bg.getContext("2d");
-const f = fx.getContext("2d");
 
-/* FALLING PETALS */
 let petals = [];
 for(let i=0;i<60;i++){
   petals.push({
@@ -175,7 +159,27 @@ function petalsFall(){
 }
 petalsFall();
 
-/* CELEBRATION EFFECT */
+/* NO BUTTON ESCAPE */
+const noBtn = document.getElementById("noBtn");
+const card = document.getElementById("card");
+
+noBtn.addEventListener("click", ()=>{
+  const maxX = card.clientWidth - noBtn.clientWidth;
+  const maxY = card.clientHeight - noBtn.clientHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+/* CELEBRATION */
+const fx = document.getElementById("fx");
+fx.width = innerWidth;
+fx.height = innerHeight;
+const f = fx.getContext("2d");
+
 let sparks = [];
 
 function burst(x,y){
@@ -206,9 +210,8 @@ function animateFx(){
 }
 
 function celebrate(){
-  const music = document.getElementById("music");
-  music.play().catch(()=>{});
-  document.getElementById("love").style.display="block";
+  document.getElementById("music").play().catch(()=>{});
+  document.getElementById("love").style.display = "block";
   setInterval(()=>burst(Math.random()*fx.width,Math.random()*fx.height),700);
   animateFx();
 }
